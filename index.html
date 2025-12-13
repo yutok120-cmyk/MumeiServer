@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="Mumei_Server.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MumeiServer</title>
+    
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+    </style>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+    <div class="container nav-content">
+        <div class="logo">
+            <i class="fa-solid fa-pickaxe-alt"></i> MumeiServer
+        </div>
+        <nav>
+            <a href="#connect-server" title="参加">
+                <i class="fa-solid fa-gamepad"></i>
+                <span class="nav-text">参加</span> 
+            </a>
+            
+            <a href="https://w.atwiki.jp/mumeisan/pages/1.html" target="_blank" title="Wiki">
+                <i class="fa-solid fa-book"></i>
+                <span class="nav-text">Wiki</span>
+            </a>
+            
+            <label class="switch-label" aria-label="テーマ切り替え">
+                <input type="checkbox" id="theme-toggle-input">
+                <span class="slider round"></span>
+            </label>
+        </nav>
+    </div>
+</header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>MumeiServer</h1>
+            <p class="server-description">無限の創造と冒険が待つ、平和で自由なサーバーです。さあ、あなたもMumeiServerの世界へ！</p>
+        </div>
+    </section>
+
+    <main>
+        
+        <section id="discord-cta" class="discord-cta">
+            <div class="container">
+                <h2>コミュニティに参加しよう</h2>
+                <p>最新情報やイベント、プレイヤー交流の場です。ぜひご参加ください。</p>
+                <a href="https://discord.gg/Sd3sccCQ" target="_blank" class="cta-button">
+                    Discordで参加
+                </a>
+            </div>
+        </section>
+
+        <section id="connect-server" class="connect-server">
+            <div class="container">
+                <h2>サーバーに接続</h2>
+                <p>以下の方法でサーバーに参加してください。</p>
+
+                <div class="connect-options-container">
+                    
+                    <div class="connect-option ip-option">
+                        <h3>🌐 PC・モバイル・CS機* (IP接続)</h3>
+                        <div class="ip-display-container">
+                            <span id="server-ip" class="copy-target">play.mumei.online</span> 
+                            <button id="copy-button" class="cta-button copy-button">
+                                IPをコピー
+                            </button>
+                        </div>
+                        
+                        <p class="copy-message" id="copy-message"></p>
+                        <p class="small-note">*CS機は直接IP入力ができない場合があります。</p>
+                    </div>
+                    
+                    <div class="connect-option gamertag-option">
+                        <h3>🎮 CS機 (Switch/PS/XBOX) の方へ</h3>
+                        <p>以下の<strong>ゲーマータグ</strong>を使ってマインクラフト内でフレンド申請をすることでサーバーに入れます。</p>
+                        
+                        <div class="gamertag-display">
+                            <span class="tag-label">ゲーマータグ:</span>
+                            <span id="gamertag-value" class="copy-target">mumei1521</span>
+                        </div>
+
+                       
+                        
+                        <p class="copy-message" id="gamertag-copy-message"></p>
+                        
+                        <p class="note">※フレンドは自動承認ですが、承認まで1～2分時間が掛かることがあります。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 MumeiServer. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+    </body>
+</html>
