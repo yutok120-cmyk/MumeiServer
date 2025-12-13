@@ -1,0 +1,454 @@
+/* ================================================= */
+/* ☀️ 共通とライトテーマのスタイル (デフォルト)        */
+/* ================================================= */
+
+body {
+    /* Noto Sans JPフォントの適用 */
+    font-family: 'Noto Sans JP', sans-serif; 
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+    /* スムーススクロールを有効にする */
+    scroll-behavior: smooth; 
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ヘッダーとナビゲーション */
+.main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #333;
+    padding: 15px 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+.nav-content {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+.logo {
+    color: #333;
+    font-size: 1.5em; 
+    font-weight: bold;
+}
+nav a {
+    color: #555;
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 400;
+    transition: color 0.3s;
+}
+nav a:hover {
+    color: #5865f2;
+}
+
+/* 🌙 トグルスイッチ (バー) のスタイル - 絵文字対応 */
+.switch-label {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+    margin-left: 20px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.switch-label input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+}
+.slider.round {
+    border-radius: 28px;
+}
+.slider:before {
+    content: "☀️"; 
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    line-height: 20px; 
+    font-size: 14px; 
+}
+input:checked + .slider {
+    background-color: #5865f2;
+}
+input:checked + .slider:before {
+    content: "🌙"; 
+    transform: translateX(22px);
+}
+
+
+/* 2. ヒーローセクション */
+.hero-section {
+    background: url('hub-background\ .png') no-repeat center center/cover; 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding-top: 60px;
+}
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4); 
+    z-index: 1;
+}
+.hero-content {
+    z-index: 2; 
+    color: white;
+}
+.hero-content h1 {
+    font-size: 5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+.server-description {
+    font-size: 1.2em;
+    padding: 0 20px;
+}
+
+
+/* メインセクションと共通見出し */
+section {
+    padding: 60px 0;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05); 
+    /* 隙間解消のためマージンを0に */
+    margin-bottom: 0; 
+    background-color: white;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+h2 {
+    color: #333;
+    transition: color 0.3s;
+    font-size: 2em;
+}
+
+/* CTAボタンの共通スタイル */
+.cta-button {
+    display: inline-block;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 4px;
+    font-weight: 700;
+    transition: background-color 0.3s, transform 0.2s;
+    border: none;
+    cursor: pointer;
+    text-decoration: none; 
+}
+
+
+/* Discord CTAセクション */
+.discord-cta {
+    background-color: #f0f0f0;
+}
+.discord-cta .cta-button {
+    background-color: #5865f2; 
+    box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+}
+.discord-cta .cta-button:hover {
+    background-color: #4752c4;
+}
+
+
+/* IPアドレス接続セクション */
+.connect-server {
+    background-color: white;
+}
+
+/* ⬇️ 横並びコンテナのスタイル */
+.connect-options-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px; 
+    margin-top: 30px;
+}
+.connect-option {
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 45%; 
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.connect-option h3 {
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #5865f2; 
+}
+
+/* 🌐 IP接続ブロック */
+.ip-display-container {
+    margin: 20px auto 5px; /* マージンを調整 */
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    gap: 15px;
+}
+#server-ip, #gamertag-value {
+    /* クリックでコピーできるようにカーソルを設定 */
+    cursor: pointer;
+}
+#server-ip {
+    background-color: #eee;
+    color: #333;
+    padding: 15px 20px;
+    font-size: 1.2em;
+    font-weight: 700;
+    border-radius: 4px;
+    font-family: monospace; 
+    border: 1px solid #ccc;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    white-space: nowrap; 
+}
+.copy-button {
+    background-color: #008800;
+    color: white;
+    padding: 15px 20px;
+    font-size: 1em;
+    margin-top: 0;
+    box-shadow: 0 4px 10px rgba(0, 136, 0, 0.3);
+}
+.copy-button:hover {
+    background-color: #006600;
+}
+.copy-message {
+    color: #008800;
+    height: 20px;
+    margin-top: 5px;
+}
+.small-note {
+    font-size: 0.85em;
+    color: #999;
+    margin-top: 15px;
+}
+/* クリックヒントのスタイル */
+.copy-hint {
+    font-size: 0.9em;
+    color: #999;
+    margin: 5px 0 0;
+}
+
+
+/* 🎮 CS機情報ブロック */
+.gamertag-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px auto 5px; /* マージンを調整 */
+}
+.tag-label {
+    font-weight: 400;
+    color: #666;
+}
+#gamertag-value {
+    background-color: #f0f0f0;
+    color: #5865f2; 
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-family: monospace;
+}
+.note {
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* フッター */
+footer {
+    background-color: #333;
+    padding: 20px 0;
+    color: #ccc;
+    margin-top: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* ================================================= */
+/* 🌗 ダークテーマのスタイル (.dark-mode)               */
+/* ================================================= */
+
+body.dark-mode {
+    background-color: #121212;
+    color: #f0f0f0; 
+}
+
+body.dark-mode .main-header {
+    background-color: rgba(18, 18, 18, 0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .logo {
+    color: #f0f0f0; 
+}
+
+body.dark-mode nav a {
+    color: #cccccc;
+}
+
+body.dark-mode h2 {
+    color: #f0f0f0;
+}
+
+/* セクションの背景 (隙間解消と見やすさ改善) */
+body.dark-mode section {
+    background-color: #1a1a1a;
+    box-shadow: none;
+}
+body.dark-mode .discord-cta {
+    background-color: #121212; 
+}
+
+/* 横並びオプションのダークモードスタイル */
+body.dark-mode .connect-option {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    box-shadow: none;
+}
+body.dark-mode .connect-option h3 {
+    color: #8090ff; 
+}
+body.dark-mode #server-ip {
+    background-color: #333;
+    color: #00ffaa;
+    border: 1px solid #333;
+}
+body.dark-mode #gamertag-value {
+    background-color: #333;
+    /* 修正: 視認性の高いエメラルドグリーンに統一 */
+    color: #00ffaa; 
+    border: 1px solid #555;
+}
+body.dark-mode .tag-label {
+    color: #aaa;
+}
+body.dark-mode .note, body.dark-mode .small-note {
+    color: #777;
+}
+body.dark-mode .copy-hint {
+    color: #555;
+}
+
+
+/* トグルスイッチの調整 */
+body.dark-mode .slider {
+    background-color: #555;
+}
+body.dark-mode input:checked + .slider {
+    background-color: #00ffaa;
+}
+body.dark-mode .slider:before {
+    background-color: #ccc;
+}
+
+
+/* フッター */
+body.dark-mode footer {
+    background-color: #0d0d0d;
+    color: #777;
+}
+
+/* ================================================= */
+/* 📱 モバイル対応 (レスポンシブデザイン)               */
+/* ================================================= */
+
+@media (max-width: 900px) {
+    /* 画面が狭くなったら縦並びに戻す */
+    .connect-options-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .connect-option {
+        max-width: 100%;
+        padding: 20px 10px;
+    }
+
+    /* IPとボタンの調整 */
+    .ip-display-container {
+        flex-direction: column; 
+        gap: 10px; 
+    }
+    #server-ip {
+        font-size: 1.2em; 
+    }
+    .copy-button {
+        width: 100%; 
+        max-width: 300px; 
+        padding: 12px 20px;
+        font-size: 0.9em;
+    }
+
+}
+
+@media (max-width: 768px) {
+    /* ナビゲーションの調整 */
+    .nav-content {
+        padding: 0;
+    }
+    nav {
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+    }
+    nav a {
+        margin-left: 15px; 
+        font-size: 0.9em;
+    }
+    
+    /* ヒーローセクションの文字サイズ縮小 */
+    .hero-content h1 {
+        font-size: 3.5em; 
+    }
+    .server-description {
+        font-size: 1em;
+    }
+
+    /* セクションのパディング調整 */
+    section {
+        padding: 40px 0;
+    }
+    h2 {
+        font-size: 1.6em;
+    }
+    
+    .connect-option h3 {
+        font-size: 1.1em;
+    }
+    .gamertag-display, #gamertag-value {
+        font-size: 1.1em;
+    }
+}
