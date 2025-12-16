@@ -39,20 +39,41 @@ body {
     align-items: center;
 }
 .logo {
-    color: #333;
-    font-size: 1.5em; 
-    font-weight: bold;
+    /* ロゴ画像をフレックスで中央に配置 */
+    display: flex;
+    align-items: center; 
 }
+/* サーバーアイコン画像のサイズ */
+.server-icon {
+    height: 40px; /* アイコンの高さを設定 */
+    width: auto;
+    border-radius: 8px; /* 角を丸くする */
+}
+
+
+/* ⬇️ アイコンとナビゲーションの調整 (PC表示時) ⬇️ */
 nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* アイコンとテキストの間隔 */
+    
     color: #555;
     text-decoration: none;
-    margin-left: 30px;
+    margin-left: 30px; 
     font-weight: 400;
     transition: color 0.3s;
 }
+
 nav a:hover {
     color: #5865f2;
 }
+
+/* リンク内のアイコンのサイズ */
+nav a i {
+    font-size: 1.1em;
+}
+/* ⬆️ アイコンとナビゲーションの調整 (PC表示時) ⬆️ */
+
 
 /* 🌙 トグルスイッチ (バー) のスタイル - 絵文字対応 */
 .switch-label {
@@ -211,7 +232,7 @@ h2 {
 
 /* 🌐 IP接続ブロック */
 .ip-display-container {
-    margin: 20px auto 5px; /* マージンを調整 */
+    margin: 20px auto 5px; 
     display: flex;
     justify-content: center; 
     align-items: center;    
@@ -268,7 +289,7 @@ h2 {
     justify-content: center;
     align-items: center;
     gap: 15px;
-    margin: 20px auto 5px; /* マージンを調整 */
+    margin: 20px auto 5px; 
 }
 .tag-label {
     font-weight: 400;
@@ -312,9 +333,8 @@ body.dark-mode .main-header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
 }
 
-body.dark-mode .logo {
-    color: #f0f0f0; 
-}
+/* ロゴのアイコンは色変更不要 (画像のため) */
+/* body.dark-mode .logo { color: #f0f0f0; } */
 
 body.dark-mode nav a {
     color: #cccccc;
@@ -330,6 +350,7 @@ body.dark-mode section {
     box-shadow: none;
 }
 body.dark-mode .discord-cta {
+    /* セクション間の隙間対策 */
     background-color: #121212; 
 }
 
@@ -411,7 +432,6 @@ body.dark-mode footer {
         padding: 12px 20px;
         font-size: 0.9em;
     }
-
 }
 
 @media (max-width: 768px) {
@@ -425,10 +445,22 @@ body.dark-mode footer {
         margin-left: 10px;
     }
     nav a {
+        /* 狭い画面ではテキストを非表示にするため、マージンを詰める */
         margin-left: 15px; 
         font-size: 0.9em;
     }
     
+    /* ⬇️ アイコン関連の修正を統合 ⬇️ */
+    /* ホットバーではテキストを非表示にし、アイコンだけを残す */
+    nav a .nav-text {
+        display: none;
+    }
+    /* アイコンのサイズを調整 */
+    nav a i {
+        font-size: 1.4em;
+    }
+    /* ⬆️ アイコン関連の修正を統合 ⬆️ */
+
     /* ヒーローセクションの文字サイズ縮小 */
     .hero-content h1 {
         font-size: 3.5em; 
