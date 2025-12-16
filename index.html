@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MumeiServer - 最高のMinecraft体験を</title>
     
-    <link rel="shortcut icon" href="Mumei_Server.png" type="image/x-icon">
-    <link rel="apple-touch-icon" href="Mumei_Server.png" sizes="180x180">
-    <link rel="icon" type="image/png" href="Mumei_Server.png" sizes="192x192">
-    <link rel="stylesheet" href="Mumei_Server.png">
-    
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
     </style>
@@ -18,31 +13,20 @@
 </head>
 <body>
 
-   <header class="main-header">
-    <div class="container nav-content">
-        <div class="logo">
-            <img src="Mumei_Server.png" alt="MumeiServer" class="server-icon">
+    <header class="main-header">
+        <div class="container nav-content">
+            <div class="logo">MumeiServer</div>
+            <nav>
+                <a href="#connect-server">参加</a>
+                <a href="https://w.atwiki.jp/mumeisan/" target="_blank">Wiki</a>
+                
+                <label class="switch-label" aria-label="テーマ切り替え">
+                    <input type="checkbox" id="theme-toggle-input">
+                    <span class="slider round"></span>
+                </label>
+            </nav>
         </div>
-        <nav>
-        </div>
-        <nav>
-            <a href="#connect-server" title="参加">
-                <i class="fa-solid fa-gamepad"></i>
-                <span class="nav-text">参加</span> 
-            </a>
-            
-            <a href="https://w.atwiki.jp/mumeisan/pages/1.html" target="_blank" title="Wiki">
-                <i class="fa-solid fa-book"></i>
-                <span class="nav-text">Wiki</span>
-            </a>
-            
-            <label class="switch-label" aria-label="テーマ切り替え">
-                <input type="checkbox" id="theme-toggle-input">
-                <span class="slider round"></span>
-            </label>
-        </nav>
-    </div>
-</header>
+    </header>
 
     <section class="hero-section">
         <div class="hero-content">
@@ -57,7 +41,7 @@
             <div class="container">
                 <h2>コミュニティに参加しよう</h2>
                 <p>最新情報やイベント、プレイヤー交流の場です。ぜひご参加ください。</p>
-                <a href="https://discord.gg/Sd3sccCQ" target="_blank" class="cta-button">
+                <a href="https://discord.gg/tDbDTduPft" target="_blank" class="cta-button">
                     Discordで参加
                 </a>
             </div>
@@ -73,11 +57,12 @@
                     <div class="connect-option ip-option">
                         <h3>🌐 PC・モバイル・CS機* (IP接続)</h3>
                         <div class="ip-display-container">
-                            <span id="server-ip" class="copy-target">play.mumei.online</span> 
+                            <span id="server-ip" class="copy-target"> play.mumei.online</span> 
                             <button id="copy-button" class="cta-button copy-button">
                                 IPをコピー
                             </button>
                         </div>
+                        
                         
                         <p class="copy-message" id="copy-message"></p>
                         <p class="small-note">*CS機は直接IP入力ができない場合があります。</p>
@@ -92,7 +77,7 @@
                             <span id="gamertag-value" class="copy-target">mumei1521</span>
                         </div>
 
-                       
+                      
                         
                         <p class="copy-message" id="gamertag-copy-message"></p>
                         
