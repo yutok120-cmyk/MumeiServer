@@ -45,9 +45,10 @@ body {
 }
 /* サーバーアイコン画像のサイズ */
 .server-icon {
-    height: 40px; /* アイコンの高さを設定 */
+    /* 修正: ロゴのサイズを30pxに縮小 */
+    height: 30px; 
     width: auto;
-    border-radius: 8px; /* 角を丸くする */
+    border-radius: 8px; 
 }
 
 
@@ -70,7 +71,8 @@ nav a:hover {
 
 /* リンク内のアイコンのサイズ */
 nav a i {
-    font-size: 1.1em;
+    /* 修正: アイコンのサイズを1.0emに調整 */
+    font-size: 1em; 
 }
 /* ⬆️ アイコンとナビゲーションの調整 (PC表示時) ⬆️ */
 
@@ -128,6 +130,7 @@ input:checked + .slider:before {
 
 /* 2. ヒーローセクション */
 .hero-section {
+    /* 背景画像のパスはそのまま維持 */
     background: url('hub-background\ .png') no-repeat center center/cover; 
     height: 100vh;
     display: flex;
@@ -333,9 +336,6 @@ body.dark-mode .main-header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
 }
 
-/* ロゴのアイコンは色変更不要 (画像のため) */
-/* body.dark-mode .logo { color: #f0f0f0; } */
-
 body.dark-mode nav a {
     color: #cccccc;
 }
@@ -350,7 +350,6 @@ body.dark-mode section {
     box-shadow: none;
 }
 body.dark-mode .discord-cta {
-    /* セクション間の隙間対策 */
     background-color: #121212; 
 }
 
@@ -365,6 +364,7 @@ body.dark-mode .connect-option h3 {
 }
 body.dark-mode #server-ip {
     background-color: #333;
+    /* 修正: 視認性の高いエメラルドグリーンに統一 */
     color: #00ffaa;
     border: 1px solid #333;
 }
@@ -450,16 +450,17 @@ body.dark-mode footer {
         font-size: 0.9em;
     }
     
-    /* ⬇️ アイコン関連の修正を統合 ⬇️ */
+    /* ⬇️ アイコン関連の修正 ⬇️ */
     /* ホットバーではテキストを非表示にし、アイコンだけを残す */
     nav a .nav-text {
         display: none;
     }
     /* アイコンのサイズを調整 */
     nav a i {
-        font-size: 1.4em;
+        /* 修正: モバイル時のアイコンサイズを1.2emに調整 */
+        font-size: 1.2em;
     }
-    /* ⬆️ アイコン関連の修正を統合 ⬆️ */
+    /* ⬆️ アイコン関連の修正 ⬆️ */
 
     /* ヒーローセクションの文字サイズ縮小 */
     .hero-content h1 {
