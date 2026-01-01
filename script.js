@@ -1,90 +1,72 @@
-// =========================================================
-// データと基本機能
-// =========================================================
+/**
+ * テーマ管理
+ */
+const body = document.body;
+const toggleInput = document.getElementById('theme-toggle-input');
+const storageKey = 'mumeiTheme';
 
-// ⬇️ 最新のお知らせのデータ配列 (newsData) は削除しました
+function applyTheme(theme) {
+    const isDark = theme === 'dark';
+    body.classList.toggle('dark-mode', isDark);
+    toggleInput.checked = isDark;
+    localStorage.setItem(storageKey, theme);
+}
 
-// ⬇️ お知らせ表示関数 (displayNews) は削除しました
+const savedTheme = localStorage.getItem(storageKey) || 
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+applyTheme(savedTheme);
 
-function setupCopyButton() {
-    const copyButton = document.getElementById('copy-button');
-    const serverIP = document.getElementById('server-ip').textContent;
-    const copyMessage = document.getElementById('copy-message');
+toggleInput.addEventListener('change', () => {
+    applyTheme(toggleInput.checked ? 'dark' : 'light');
+});
 
-    copyButton.addEventListener('click', () => {
-        navigator.clipboard.writeText(serverIP).then(() => {
-            copyMessage.textContent = '✅ IPアドレスをコピーしました！';
-            setTimeout(() => {
-                copyMessage.textContent = '';
-            }, 3000);
-        }).catch(err => {
-             copyMessage.textContent = 'コピーに失敗しました。';
+/**
+ * Minecraftサーバーのステータスと人数を取得
+ */
+async function updateServerStatus() {
+    const ip = "play.mumei.online";
+    const statusContainer = document.getElementById('status-container');
+    const statusText = document.getElementById('status-text');
+    
+    try {
+        const response = await fetch(`https://api.mcstatus.io/v2/status/java/${ip}`);
+        const data = await response.json();
+        
+        statusContainer.classList.remove('loading', 'online', 'offline');
+        
+        if (data.online) {
+            statusContainer.classList.add('online');
+            statusText.textContent = `オンライン：現在 ${data.players.online} 人が冒険中！`;
+        } else {
+            statusContainer.classList.add('offline');
+            statusText.textContent = "現在オフラインです";
+        }
+    } catch (error) {
+        statusText.textContent = "ステータス取得エラー";
+    }
+}
+
+/**
+ * コピー機能
+ */
+function initCopyFeature(triggerId, textId, msgId) {
+    const trigger = document.getElementById(triggerId);
+    const textTarget = document.getElementById(textId);
+    const message = document.getElementById(msgId);
+
+    if (!trigger || !textTarget || !message) return;
+
+    trigger.addEventListener('click', () => {
+        navigator.clipboard.writeText(textTarget.innerText).then(() => {
+            message.textContent = '✅ コピーしました！';
+            setTimeout(() => { message.textContent = ''; }, 3000);
         });
     });
 }
 
-// =========================================================
-// テーマ切り替え機能 (メインロジック)
-// =========================================================
-
-const body = document.body;
-const toggleInput = document.getElementById('theme-toggle-input');
-const localStorageKey = 'mumeiTheme';
-
-/**
- * テーマを設定し、HTMLクラス、Local Storage、チェックボックスの状態を更新する
- * @param {string} theme - 'light' または 'dark'
- */
-function setTheme(theme) {
-    const isDark = (theme === 'dark');
-    
-    // 1. HTMLクラスの更新
-    if (isDark) {
-        body.classList.add('dark-mode');
-    } else {
-        body.classList.remove('dark-mode');
-    }
-    
-    // 2. チェックボックスの状態を反映
-    toggleInput.checked = isDark; 
-    
-    // 3. Local Storageに保存
-    localStorage.setItem(localStorageKey, theme);
-}
-
-/**
- * ページロード時にテーマを初期化する
- * 優先順位: Local Storage > OS設定 > デフォルト(light)
- */
-function initializeTheme() {
-    const savedTheme = localStorage.getItem(localStorageKey);
-    
-    if (savedTheme) {
-        // 1. Local Storageに保存されたテーマがあれば適用
-        setTheme(savedTheme);
-        return;
-    }
-
-    // 2. Local Storageになければ、OSの設定を確認
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setTheme('dark');
-    } else {
-        // 3. どちらでもなければライトテーマを適用
-        setTheme('light');
-    }
-}
-
-// イベントリスナー: チェックボックスの状態変更イベントでテーマを切り替える
-toggleInput.addEventListener('change', () => {
-    // チェックボックスがチェックされていたら 'dark'、そうでなければ 'light' に設定
-    const newTheme = toggleInput.checked ? 'dark' : 'light';
-    setTheme(newTheme);
-});
-
-
-// ページ読み込み完了時にすべての機能を実行
 document.addEventListener('DOMContentLoaded', () => {
-    initializeTheme(); // テーマ初期化を最初に行う
-    // ⬇️ displayNews() の呼び出しを削除
-    setupCopyButton(); 
+    updateServerStatus();
+    setInterval(updateServerStatus, 60000); // 1分おきに更新
+    initCopyFeature('copy-ip-trigger', 'server-ip', 'copy-message-ip');
+    initCopyFeature('copy-tag-trigger', 'gamertag-value', 'copy-message-tag');
 });
