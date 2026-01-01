@@ -6,19 +6,27 @@
     <link rel="icon" href="Mumei_Server.png">
     <title>MumeiServer - 最高のMinecraft体験を</title>
     
+    <meta property="og:title" content="MumeiServer">
+    <meta property="og:description" content="無限の創造と冒険が待つ、平和で自由なマイクラサーバー。">
+    <meta property="og:image" content="Mumei_Server.png">
+    <meta name="theme-color" content="#5865f2">
+
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
     </style>
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="main-header">
         <div class="container nav-content">
-            <div class="logo">MumeiServer</div>
+            <div class="logo-area">
+                <img src="Mumei_Server.png" alt="Icon" class="header-icon">
+                <span class="logo">MumeiServer</span>
+            </div>
             <nav>
                 <a href="#connect-server">参加</a>
+                <a href="#rules">ルール</a>
                 <a href="https://w.atwiki.jp/mumeisan/" target="_blank">Wiki</a>
                 <a href="https://mumeimap.nulrio.com" target="_blank">Map</a>
                 
@@ -33,57 +41,105 @@
     <section class="hero-section">
         <div class="hero-content">
             <h1>MumeiServer</h1>
-            <p class="server-description">無限の創造と冒険が待つ、平和で自由なサーバーです。さあ、あなたもMumeiServerの世界へ！</p>
+            <p class="server-description">無限の創造と冒険が待つ、平和で自由なサーバーです。</p>
         </div>
     </section>
 
     <main>
-        
         <section id="discord-cta" class="discord-cta">
             <div class="container">
                 <h2>コミュニティに参加しよう</h2>
                 <p>最新情報やイベント、プレイヤー交流の場です。ぜひご参加ください。</p>
-                <a href="https://discord.gg/tDbDTduPft" target="_blank" class="cta-button">
-                    Discordで参加
-                </a>
+                <a href="https://discord.gg/tDbDTduPft" target="_blank" class="cta-button">Discordで参加</a>
             </div>
         </section>
 
         <section id="connect-server" class="connect-server">
             <div class="container">
                 <h2>サーバーに接続</h2>
-                <p>以下の方法でサーバーに参加してください。</p>
-
-                <div class="connect-options-container">
-                    
-                    <div class="connect-option ip-option">
-                        <h3>🌐 PC・モバイル・CS機* (IP接続)</h3>
-                        <div class="ip-display-container">
-                            <span id="server-ip" class="copy-target"> play.mumei.online</span> 
-                            <button id="copy-button" class="cta-button copy-button">
-                                IPをコピー
-                            </button>
+                <div class="connect-options-grid">
+                    <div class="connect-card clickable-copy" id="copy-ip-trigger">
+                        <h3>🌐 PC / Mobile / CS (IP接続)</h3>
+                        
+                        <div id="status-container" class="status-box loading">
+                            <span class="status-dot"></span>
+                            <span id="status-text">情報を取得中...</span>
                         </div>
-                        
-                        
-                        <p class="copy-message" id="copy-message"></p>
-                        <p class="small-note">*CS機は直接IP入力ができない場合があります。</p>
+
+                        <div class="display-box">
+                            <span id="server-ip" class="copy-value-font">play.mumei.online</span>
+                            <span class="copy-icon">📋</span>
+                        </div>
+                        <p id="copy-message-ip" class="copy-success"></p>
                     </div>
                     
-                    <div class="connect-option gamertag-option">
-                        <h3>🎮 CS機 (Switch/PS/XBOX) の方へ</h3>
-                        <p>以下の<strong>ゲーマータグ</strong>を使ってマインクラフト内でフレンド申請をすることでサーバーに入れます。</p>
-                        
-                        <div class="gamertag-display">
-                            <span class="tag-label">ゲーマータグ:</span>
-                            <span id="gamertag-value" class="copy-target">mumei1521</span>
+                    <div class="connect-card clickable-copy" id="copy-tag-trigger">
+                        <h3>🎮 CS (Switch/PS/Xbox) ゲーマータグ</h3>
+                        <div class="display-box">
+                            <span id="gamertag-value" class="copy-value-font">mumei1521</span>
+                            <span class="copy-icon">📋</span>
                         </div>
+                        <p id="copy-message-tag" class="copy-success"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                      
-                        
-                        <p class="copy-message" id="gamertag-copy-message"></p>
-                        
-                        <p class="note">※フレンドは自動承認ですが、承認まで1～2分時間が掛かることがあります。</p>
+        <section id="rules" class="rules-section">
+            <div class="container">
+                <h2>ルール & 利用規約</h2>
+                <div class="rules-layout">
+                    <div class="rules-main">
+                        <div class="rule-group">
+                            <h3>🎮 Minecraft サーバー内ルール</h3>
+                            <div class="rule-box">
+                                <h4>1. 基本理念</h4>
+                                <p>お互いを尊重し、思いやりを持って行動しましょう。</p>
+                            </div>
+                            <div class="rule-box warning">
+                                <h4>2. 禁止事項</h4>
+                                <ul>
+                                    <li><strong>チート・ハック:</strong> 外部ツール、バグの不正利用。</li>
+                                    <li><strong>妨害行為:</strong> サーバーへの攻撃、意図的な負荷。</li>
+                                    <li><strong>荒らし:</strong> 他人の建築の破壊、窃盗。</li>
+                                    <li><strong>迷惑行為:</strong> 暴言、誹謗中傷、スパム、土地占拠。</li>
+                                    <li><strong>景観破壊:</strong> 1x1タワー、溶岩流し等の放置。</li>
+                                </ul>
+                            </div>
+                            <div class="rule-box info">
+                                <h4>3. 土地保護・建築のルール</h4>
+                                <ul>
+                                    <li><strong>初期スポーン付近:</strong> 半径5チャンク内は、原則1人「1チャンクのみ」取得可能（2025/12/18以前分除く）。</li>
+                                    <li><strong>放置保護の解除:</strong> 最終ログインから30日経過で解除されます。</li>
+                                </ul>
+                            </div>
+                            <div class="rule-box">
+                                <h4>4. 装置・負荷対策</h4>
+                                <ul>
+                                    <li><strong>クロック回路:</strong> 未使用時は停止。高速なものは禁止。</li>
+                                    <li><strong>自動装置:</strong> MOBが溜まらない設計にし、離席時は停止。</li>
+                                    <li><strong>増殖バグ:</strong> 全面的に禁止です。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rules-side">
+                        <div class="rule-card mini">
+                            <h3>⚖️ 利用規約</h3>
+                            <ul class="small-list">
+                                <li>運営はデータ損失の責任を負いません。</li>
+                                <li>違反時は予告なくBANする場合があります。</li>
+                                <li>建築物は公式広報に使用する場合があります。</li>
+                            </ul>
+                        </div>
+                        <div class="rule-card mini penalty">
+                            <h3>🚫 罰則規定</h3>
+                            <ol class="small-list">
+                                <li>警告</li>
+                                <li>タイムアウト</li>
+                                <li>永久BAN</li>
+                            </ol>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -97,6 +153,4 @@
     </footer>
 
     <script src="script.js"></script>
-
-    </body>
-</html>
+</body>
